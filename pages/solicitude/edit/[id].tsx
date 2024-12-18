@@ -23,7 +23,6 @@ import {
 } from "../../../lib/utils/check_permissions";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import { FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
-import CajasModal from "../../../lib/components/modals/cajasModal";
 import EmpacadorPanel from "../../../lib/layouts/edit_solicitude/empacador";
 import FincasModal from "../../../lib/components/modals/fincaModal";
 import TreeTable, { ColumnData } from "../../../lib/components/tree_table";
