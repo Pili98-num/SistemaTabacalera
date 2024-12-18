@@ -23,6 +23,7 @@ import {
 } from "../../../lib/utils/check_permissions";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import { FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
+import CajasModal from "../../../lib/components/modals/cajasModal";
 import EmpacadorPanel from "../../../lib/layouts/edit_solicitude/empacador";
 import FincasModal from "../../../lib/components/modals/fincaModal";
 import TreeTable, { ColumnData } from "../../../lib/components/tree_table";
@@ -356,9 +357,9 @@ export const EditSolicitude = () => {
                           >
                             <path
                               stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
                               d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                             />
                           </svg>
@@ -395,7 +396,7 @@ export const EditSolicitude = () => {
                           )}
                         </tr>
                       </thead>
-                      {/* <tbody>
+                      <tbody>
                         <>
                           {sortItemsByName()}
                           {(filterItems() ?? []).map((item, index) => {
@@ -457,7 +458,7 @@ export const EditSolicitude = () => {
                             );
                           })}
                         </>
-                      </tbody> */}
+                      </tbody>
                     </table>
                   </div>
                 </>
