@@ -5,7 +5,6 @@ import { useAuth } from "../../hooks/use_auth";
 import { Fincas, ModalProps, ResponseData, Solicitude } from "../../types";
 import { CheckFinished, CheckPermissions } from "../../utils/check_permissions";
 import HttpClient from "../../utils/http_client";
-import { UploadSolicitudeImages } from "../../utils/upload_solicitude_images";
 import { Pendiente, Terminado } from "../../utils/constants";
 import Router from "next/router";
 import FormatedDate from "../../utils/formated_date";
