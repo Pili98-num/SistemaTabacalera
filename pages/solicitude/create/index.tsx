@@ -6,6 +6,7 @@ import Router from "next/router";
 import { toast } from "react-toastify";
 import { Solicitude, ResponseData, Cajas, Fincas } from "../../../lib/types";
 import HttpClient from "../../../lib/utils/http_client";
+import { UploadSolicitudeImages } from "../../../lib/utils/upload_solicitude_images";
 import { useState } from "react";
 import FormatedDate from "../../../lib/utils/formated_date";
 import { Pendiente, Terminado } from "../../../lib/utils/constants";

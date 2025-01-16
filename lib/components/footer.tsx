@@ -9,7 +9,7 @@ const Footer = () => {
         <Row style={{fontSize: "12px"}}>
           <Col md={4} className="text-center">
             <p style={{ color: "#999999", margin: 0 }}>
-              &copy; Desarrollado por Sistemas 2022/23
+              &copy; Desarrollado por Rocio Nuñez 2024/25
             </p>
           </Col>
           <Col md={4} className="text-center">

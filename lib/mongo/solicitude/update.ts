@@ -12,9 +12,7 @@ export default async function handler(
   const role = req.headers.role as string;
 
   const newSolicitude = (): Solicitude => {
-
     return solicitude;
-
   };
 
   const resp = await SolicitudeModel.findOneAndUpdate(

@@ -5,6 +5,7 @@ import { useAuth } from "../../hooks/use_auth";
 import { Fincas, ModalProps, ResponseData, Solicitude } from "../../types";
 import { CheckFinished, CheckPermissions } from "../../utils/check_permissions";
 import HttpClient from "../../utils/http_client";
+import { UploadSolicitudeImages } from "../../utils/upload_solicitude_images";
 import { Pendiente, Terminado } from "../../utils/constants";
 import Router from "next/router";
 import FormatedDate from "../../utils/formated_date";
@@ -136,7 +137,7 @@ const FincasModal = (props: Props) => {
             <hr />
             <div className="grid md:grid-cols-2 grid-cols-1 gap-4 mb-3">
               <div>
-                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5]) && (
+                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5, 6]) && (
                   <>
                     <label className="text-gray-700 text-sm font-bold mb-2">
                       * Casona
@@ -154,7 +155,7 @@ const FincasModal = (props: Props) => {
                 )}
               </div>
               <div>
-                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5]) && (
+                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5, 6]) && (
                   <>
                     <label className="text-gray-700 text-sm font-bold mb-2">
                       * Aposento
@@ -172,7 +173,7 @@ const FincasModal = (props: Props) => {
                 )}
               </div>
               <div>
-                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5]) && (
+                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5, 6]) && (
                   <>
                     <label className="text-gray-700 text-sm font-bold mb-2">
                       * Lote
@@ -190,7 +191,7 @@ const FincasModal = (props: Props) => {
                 )}
               </div>
               <div>
-                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5]) && (
+                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5, 6]) && (
                   <>
                     <label className="text-gray-700 text-sm font-bold mb-2">
                       * Corte
@@ -208,7 +209,7 @@ const FincasModal = (props: Props) => {
                 )}
               </div>
               <div>
-                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5]) && (
+                {CheckPermissions(auth, [0, 1, 2, 3, 4, 5, 6]) && (
                   <>
                     <label className="text-gray-700 text-sm font-bold mb-2">
                       * Variedad
@@ -266,7 +267,7 @@ const FincasModal = (props: Props) => {
                       />
                     </div>
                     <div>
-                      {CheckPermissions(auth, [4, 5]) && (
+                      {CheckPermissions(auth, [4, 5, 6]) && (
                         <>
                           <label className="text-gray-700 text-sm font-bold mb-2">
                             * Año de coseña
@@ -284,7 +285,7 @@ const FincasModal = (props: Props) => {
                       )}
                     </div>
                     <div>
-                      {CheckPermissions(auth, [4, 5]) && (
+                      {CheckPermissions(auth, [4, 5, 6]) && (
                         <>
                           <label className="text-gray-700 text-sm font-bold mb-2">
                             * Variedad
@@ -302,7 +303,7 @@ const FincasModal = (props: Props) => {
                       )}
                     </div>
                     <div>
-                      {CheckPermissions(auth, [4, 5]) && (
+                      {CheckPermissions(auth, [4, 5, 6]) && (
                         <>
                           <label className="text-gray-700 text-sm font-bold mb-2">
                             * Corte
@@ -320,7 +321,7 @@ const FincasModal = (props: Props) => {
                       )}
                     </div>
                     <div>
-                      {CheckPermissions(auth, [4, 5]) && (
+                      {CheckPermissions(auth, [4, 5, 6]) && (
                         <>
                           <label className="text-gray-700 text-sm font-bold mb-2">
                             * Lote
@@ -338,7 +339,7 @@ const FincasModal = (props: Props) => {
                       )}
                     </div>
                     <div>
-                      {CheckPermissions(auth, [4, 5]) && (
+                      {CheckPermissions(auth, [4, 5, 6]) && (
                         <>
                           <label className="text-gray-700 text-sm font-bold mb-2">
                             * Calidad
@@ -362,7 +363,7 @@ const FincasModal = (props: Props) => {
                       )}
                     </div>
                     <div>
-                      {CheckPermissions(auth, [5]) && (
+                      {CheckPermissions(auth, [5, 6]) && (
                         <>
                           <label className="text-gray-700 text-sm font-bold mb-2">
                             * Peso neto (libras)
@@ -380,7 +381,7 @@ const FincasModal = (props: Props) => {
                       )}
                     </div>
                     <div>
-                      {CheckPermissions(auth, [5]) && (
+                      {CheckPermissions(auth, [5, 6]) && (
                         <>
                           <label className="text-gray-700 text-sm font-bold mb-2">
                             * Peso bruto (libras)

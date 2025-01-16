@@ -1,14 +1,21 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Solicitude } from "../../types";
-import { Terminado } from "../../utils/constants";
-import { SolicitudeModel } from "../schemas";
+import dbConnect from "../../../lib/middlewares/mongo";
+import { SolicitudeModel } from "../../../lib/mongo/schemas";
+import { Solicitude } from "../../../lib/types";
+import { Aprobado } from "../../../lib/utils/constants";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  await dbConnect();
+
   const solicitudes = await SolicitudeModel.find({
-    EstadoSupervisor: { $ne: Terminado },
+    imageTreasuryState: Aprobado,
+    number: {
+      $gte: 151,
+      $lte: 300
+    }
   });
 
   if (req.query.dates !== undefined) {
@@ -20,7 +27,7 @@ export default async function handler(
     const filtered = [];
 
     solicitudes.forEach((soli: Solicitude) => {
-      const soliDates = soli.fecha.replace(",", "").split(" ")[0].split("/");
+      const soliDates = soli.date.replace(",", "").split(" ")[0].split("/");
       const soliDate = new Date(
         soliDates[2] +
           "-" +
@@ -43,7 +50,7 @@ export default async function handler(
     });
   } else {
     return res.status(200).json({
-      message: "todas las solicitudes",
+      message: "Todas las solicitudes",
       data: solicitudes as Array<Solicitude>,
       success: true,
     });

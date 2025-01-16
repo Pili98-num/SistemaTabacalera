@@ -1,5 +1,4 @@
 import { useFormik } from "formik";
-import { TabPanel } from "../../../lib/components/tab_container";
 import SoliciterPanel from "../../../lib/layouts/edit_solicitude/soliciter";
 import {
   Cajas,
@@ -21,8 +20,8 @@ import {
   CheckFinishedToMore,
   CheckPermissions,
 } from "../../../lib/utils/check_permissions";
-import { Button, Col, Row, Table } from "react-bootstrap";
-import { FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
+import { Button, Col, Row } from "react-bootstrap";
+import { FaEdit } from "react-icons/fa";
 import EmpacadorPanel from "../../../lib/layouts/edit_solicitude/empacador";
 import FincasModal from "../../../lib/components/modals/fincaModal";
 import TreeTable, { ColumnData } from "../../../lib/components/tree_table";
@@ -30,6 +29,7 @@ import ComentModal from "../../../lib/components/modals/coment";
 import AdminPanel from "../../../lib/layouts/edit_solicitude/administrador";
 import BodegueroPanel from "../../../lib/layouts/edit_solicitude/bodeguero";
 import MullingPanel from "../../../lib/layouts/edit_solicitude/mulling";
+import SupervisorPanel from "../../../lib/layouts/edit_solicitude/supervisor";
 
 export const EditSolicitude = () => {
   const { auth } = useAuth();
@@ -306,6 +306,8 @@ export const EditSolicitude = () => {
                     <BodegueroPanel lg={6} md={6} formik={formik} />
                   ) : CheckPermissions(auth, [5]) ? (
                     <MullingPanel lg={6} md={6} formik={formik} />
+                  ) : CheckPermissions(auth, [6]) ? (
+                    <SupervisorPanel lg={6} md={6} formik={formik} />
                   ) : null}
                 </div>
               </div>
@@ -356,9 +358,6 @@ export const EditSolicitude = () => {
                           >
                             <path
                               stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
                               d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                             />
                           </svg>
@@ -396,13 +395,9 @@ export const EditSolicitude = () => {
                         </tr>
                       </thead>
                       <tbody>
-
                         {(filterItems() ?? []).map((item, index) => {
                           return (
-                            <tr
-                              key={index}
-                              className="text-center text-nowrap"
-                            >
+                            <tr key={index} className="text-center text-nowrap">
                               <td className="p-1">
                                 <div className="d-flex justify-content-between">
                                   <button
