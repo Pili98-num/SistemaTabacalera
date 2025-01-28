@@ -110,7 +110,7 @@ export const EditSolicitude = () => {
 
   const onSubmit = async (formData: Solicitude) => {
     if (Router.asPath !== Router.route) {
-      setLoading(true);
+
       const solicitudeId = Router.query.id as string;
       const requestData = {
         ...formData,
@@ -118,7 +118,18 @@ export const EditSolicitude = () => {
         id: solicitudeId,
         cometarios: itemsComment,
       };
-      console.log(requestData);
+
+      if (auth.role === 2) {
+        console.log(requestData)
+        console.log(requestData.fincas.filter((finca) => finca.cajas.length).length)
+
+        if (requestData.fincas.filter((finca) => finca.cajas.length).length === 0) {
+          toast.warning("Hay casonas sin cajas. Por favor, ingresa cajas para todas las casonas.");
+          return;
+        }
+      }
+
+      setLoading(true)
       const response: ResponseData = await HttpClient(
         "/api/solicitude",
         "PUT",
@@ -295,29 +306,29 @@ export const EditSolicitude = () => {
                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   />
                 </div>
-                
+
               </div>
               <div>
-                  {CheckPermissions(auth, [3]) ? (
-                    <>
+                {CheckPermissions(auth, [3]) ? (
+                  <>
                     <div className="flex gap-4 px-5">
                       <SoliciterPanel lg={6} md={6} formik={formik} />
                       <EmpacadorPanel lg={6} md={6} formik={formik} />
                       <AdminPanel lg={6} md={6} formik={formik} />
-                      </div>
-                    </>
-                  ) : CheckPermissions(auth, [2]) ? (
-                    <EmpacadorPanel lg={6} md={6} formik={formik} />
-                  ) : CheckPermissions(auth, [1]) ? (
-                    <SoliciterPanel lg={6} md={6} formik={formik} />
-                  ) : CheckPermissions(auth, [4]) ? (
-                    <BodegueroPanel lg={6} md={6} formik={formik} />
-                  ) : CheckPermissions(auth, [5]) ? (
-                    <MullingPanel lg={6} md={6} formik={formik} />
-                  ) : CheckPermissions(auth, [6]) ? (
-                    <SupervisorPanel lg={6} md={6} formik={formik} />
-                  ) : null}
-                </div>
+                    </div>
+                  </>
+                ) : CheckPermissions(auth, [2]) ? (
+                  <EmpacadorPanel lg={6} md={6} formik={formik} />
+                ) : CheckPermissions(auth, [1]) ? (
+                  <SoliciterPanel lg={6} md={6} formik={formik} />
+                ) : CheckPermissions(auth, [4]) ? (
+                  <BodegueroPanel lg={6} md={6} formik={formik} />
+                ) : CheckPermissions(auth, [5]) ? (
+                  <MullingPanel lg={6} md={6} formik={formik} />
+                ) : CheckPermissions(auth, [6]) ? (
+                  <SupervisorPanel lg={6} md={6} formik={formik} />
+                ) : null}
+              </div>
               <div>
                 {CheckPermissions(auth, [0, 1]) && (
                   <button
@@ -530,7 +541,7 @@ export const EditSolicitude = () => {
                       Terminado
                     )}
                   >
-                    Crear Comentario
+                    Guardar Comentario
                   </Button>
                 </Col>
                 <Col>
