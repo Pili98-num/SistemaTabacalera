@@ -57,6 +57,7 @@ export type Comentario = {
 };
 
 export type Cajas = {
+  fincaNombre: ReactNode;
   id?: string;
   NumeroDeCaja: number;
   cantidad: number;
