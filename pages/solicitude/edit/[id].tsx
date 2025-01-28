@@ -295,13 +295,21 @@ export const EditSolicitude = () => {
                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   />
                 </div>
-                <div>
-                  {CheckPermissions(auth, [1]) ? (
-                    <SoliciterPanel lg={6} md={6} formik={formik} />
+                
+              </div>
+              <div>
+                  {CheckPermissions(auth, [3]) ? (
+                    <>
+                    <div className="flex gap-4 px-5">
+                      <SoliciterPanel lg={6} md={6} formik={formik} />
+                      <EmpacadorPanel lg={6} md={6} formik={formik} />
+                      <AdminPanel lg={6} md={6} formik={formik} />
+                      </div>
+                    </>
                   ) : CheckPermissions(auth, [2]) ? (
                     <EmpacadorPanel lg={6} md={6} formik={formik} />
-                  ) : CheckPermissions(auth, [3]) ? (
-                    <AdminPanel lg={6} md={6} formik={formik} />
+                  ) : CheckPermissions(auth, [1]) ? (
+                    <SoliciterPanel lg={6} md={6} formik={formik} />
                   ) : CheckPermissions(auth, [4]) ? (
                     <BodegueroPanel lg={6} md={6} formik={formik} />
                   ) : CheckPermissions(auth, [5]) ? (
@@ -310,7 +318,6 @@ export const EditSolicitude = () => {
                     <SupervisorPanel lg={6} md={6} formik={formik} />
                   ) : null}
                 </div>
-              </div>
               <div>
                 {CheckPermissions(auth, [0, 1]) && (
                   <button

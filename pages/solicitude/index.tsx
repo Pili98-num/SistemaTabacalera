@@ -129,8 +129,8 @@ export const SolicitudePage = (props: Props) => {
     edit: (rowData: Cajas) =>
       !CheckPermissions(auth, [0, 8])
         ? Router.push({
-            pathname: "/solicitude/edit/" + (rowData.id as string),
-          })
+          pathname: "/solicitude/edit/" + (rowData.id as string),
+        })
         : toast.error("No puedes acceder"),
     delete: async (rowData: Cajas) => {
       !CheckPermissions(auth, [0])
@@ -140,8 +140,8 @@ export const SolicitudePage = (props: Props) => {
     download: (rowData: Cajas) =>
       !CheckPermissions(auth, [0])
         ? Router.push({
-            pathname: "/solicitude/print/" + (rowData.id as string),
-          })
+          pathname: "/solicitude/print/" + (rowData.id as string),
+        })
         : toast.error("No puedes acceder"),
   };
   return (
@@ -163,17 +163,18 @@ export const SolicitudePage = (props: Props) => {
                 Solicitudes de envio de contenedor
               </p>
             </div>
+            {CheckPermissions(auth, [1]) && (
+              <Button
+                className="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-3 text-center mx-2 mb-2 mt-3 dark:focus:ring-yellow-900"
+                onClick={() =>
 
-            <Button
-              className="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-3 text-center mx-2 mb-2 mt-3 dark:focus:ring-yellow-900"
-              onClick={() =>
-                CheckPermissions(auth, [0, 1])
-                  ? Router.push({ pathname: "/solicitude/create" })
-                  : toast.info("No puede ingresar solicitudes")
-              }
-            >
-              Crear Solicitud
-            </Button>
+                  Router.push({ pathname: "/solicitude/create" })
+
+                }
+              >
+                Crear Solicitud
+              </Button>
+            )}
             <div className="p-2">
               <TreeTable
                 keyExpr="id"

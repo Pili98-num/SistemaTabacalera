@@ -94,7 +94,14 @@ const PrintSolicitude = () => {
   const cajasPorCortes = useMemo(() => {
     if (!solicitude?.fincas) return {};
 
-    const todasLasCajas = solicitude.fincas.flatMap((finca) => finca.cajas);
+    // Obtener todas las cajas junto con los datos de la finca a la que pertenecen
+    const todasLasCajas = solicitude.fincas.flatMap((finca) =>
+      finca.cajas.map((caja) => ({
+        ...caja,
+        fincaNombre: finca.casona, // O el campo que identifica la finca
+        fincaId: finca.id, // O el identificador único de la finca
+      }))
+    );
 
     // Agrupar cajas por corte
     return todasLasCajas.reduce<Record<string, Cajas[]>>((acc, caja) => {
@@ -227,6 +234,9 @@ const PrintSolicitude = () => {
                           Número de Caja
                         </th>
                         <th className="px-4 py-2 border border-gray-300">
+                          Casona
+                        </th>
+                        <th className="px-4 py-2 border border-gray-300">
                           Variedad
                         </th>
                         <th className="px-4 py-2 border border-gray-300">
@@ -253,6 +263,9 @@ const PrintSolicitude = () => {
                             <tr key={caja.NumeroDeCaja}>
                               <td className="px-4 py-2 border border-gray-300">
                                 {caja.NumeroDeCaja}
+                              </td>
+                              <td className="px-4 py-2 border border-gray-300">
+                                {caja.fincaNombre}
                               </td>
                               <td className="px-4 py-2 border border-gray-300">
                                 {caja.variedad}

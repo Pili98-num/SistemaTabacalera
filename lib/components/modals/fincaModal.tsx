@@ -120,9 +120,8 @@ const FincasModal = (props: Props) => {
   return (
     <>
       <div
-        className={`fixed inset-0 flex items-center justify-center z-50 ${
-          props.visible ? "" : "hidden"
-        }`}
+        className={`fixed inset-0 flex items-center justify-center z-50 ${props.visible ? "" : "hidden"
+          }`}
       >
         <div className="fixed inset-0 bg-black opacity-50"></div>
         <div className="bg-white p-6 rounded shadow-lg z-10 w-2/3 h-5/6 overflow-y-auto">
@@ -233,17 +232,19 @@ const FincasModal = (props: Props) => {
                 <h3 className="text-center text-xl mb-2 font-semibold">
                   Cajas
                 </h3>
-                <button
-                  type="button"
-                  className="bg-blue-500 text-white px-4 py-2 rounded"
-                  onClick={() => {
-                    CheckPermissions(auth, [0, 2, 4])
-                      ? addCaja()
-                      : toast.info("No tienes permiso para agregar cajas");
-                  }}
-                >
-                  + Añadir Caja
-                </button>
+                {CheckPermissions(auth, [2]) && (
+                  <button
+                    type="button"
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                    onClick={() => {
+                      CheckPermissions(auth, [0, 2, 4])
+                        ? addCaja()
+                        : toast.info("No tienes permiso para agregar cajas");
+                    }}
+                  >
+                    + Añadir Caja
+                  </button>
+                )}
               </div>
 
               {formik.values.cajas.map((caja, index) => (
@@ -398,17 +399,19 @@ const FincasModal = (props: Props) => {
                       )}
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="bg-red-500 text-white px-4 py-2 rounded mt-2 self-end"
-                    onClick={() => {
-                      CheckPermissions(auth, [0, 2])
-                        ? removeCaja(index)
-                        : toast.info("No tienes permiso para eliminar cajas");
-                    }}
-                  >
-                    Eliminar Caja
-                  </button>
+                  {CheckPermissions(auth, [2]) && (
+                    <button
+                      type="button"
+                      className="bg-red-500 text-white px-4 py-2 rounded mt-2 self-end"
+                      onClick={() => {
+                        CheckPermissions(auth, [0, 2])
+                          ? removeCaja(index)
+                          : toast.info("No tienes permiso para eliminar cajas");
+                      }}
+                    >
+                      Eliminar Caja
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
