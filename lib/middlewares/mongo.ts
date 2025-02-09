@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose'//libreria de mongoose
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;//llamando a la variable de entorno
 
 if (!MONGODB_URI) {
   throw new Error(
@@ -14,7 +14,7 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null }
 }
 
-async function dbConnect() {
+async function dbConnect() { //funcion dbconnect
   if (cached.conn) {
     return cached.conn
   }
@@ -29,11 +29,11 @@ async function dbConnect() {
       // useCreateIndex: true
     }
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then(mongoose => {
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then(mongoose => {//llamado para la conexión mediante libreria.connect y variable
       return mongoose
     })
   }
-  cached.conn = await cached.promise
+  cached.conn = await cached.promise //muestra que la conexion es correcta 
   return cached.conn
 }
 

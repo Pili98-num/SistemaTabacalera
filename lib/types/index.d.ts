@@ -1,17 +1,17 @@
 import { FormikProps, FormikErrors, FormikTouched } from "formik";
 
-//tipos de datos para la app
+//tipos de datos para la app en el login
 export type AuthContextProps = {
   auth: User | null;
   login: (userData: User) => void;
   logout: () => void;
 };
 
-//Datos de respuesta
+//Datos de respuesta que envia la base de datos 
 export type ResponseData = {
-  message?: string;
-  data?: any;
-  success: boolean;
+  message?: string;//mesaje que se recibe 
+  data?: any;//los datos que nos mostrará 
+  success: boolean;// acceso verdadero o falso 
 };
 
 //Datos del login

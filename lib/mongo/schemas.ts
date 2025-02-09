@@ -60,7 +60,7 @@ ComentarioSchema.set("toJSON", {
 
 const CajasSchema = new mongoose.Schema<Cajas>(
   {
-    //Solicitante
+    //Solicitante 
     NumeroDeCaja: { type: Number },
 
     cantidad: { type: Number },
@@ -88,7 +88,7 @@ CajasSchema.set("toJSON", {
 
 const FincasSchema = new mongoose.Schema<Fincas>(
   {
-    //Solicitante
+    //Solicitante hector veloz 
     casona: { type: String },
     aposento: { type: String },
     corte: { type: String },

@@ -149,6 +149,7 @@ const UsersPanel = () => {
                 )
               : await HttpClient(
                   "/api/user",
+
                   "PUT",
                   auth.userName,
                   auth.role,

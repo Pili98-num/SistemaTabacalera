@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// administra datos del local storage
+// administra datos del local storage en el navegador y ver la sesión activa del usuario 
 export const useLocalStorage = (key: string) => {
   // estado inicial de valor [key] ingresado
   const [storedValue, setStoredValue] = useState<any | null>(() => {

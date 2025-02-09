@@ -25,7 +25,7 @@ const Login = () => {
   // envia los datos del formulario
   const onSubmit = async (formData: LoginData) => {
     setLoading(true);
-    const response = await HttpClient("/api/login", "POST", "", -1, formData);
+    const response = await HttpClient("/api/login", "POST", "", -1, formData);//ENVIAN PETICION A LA API DE LOGIN CON EL METODO POST
     if (response.success) {
       const data = response.data;
       login(data);
@@ -62,22 +62,21 @@ const Login = () => {
             padding: "20px",
           }}
         >
-          <h2
+          <h1
             className="text-center"
             style={{
-              color: "#B98F35",
               padding: "12px",
               fontSize: "26px",
               fontWeight: 700,
             }}
           >
             Gestión de envío de contenedores Tabacalera J&Q S.A.S
-          </h2>
+          </h1>
 
           <LoadingContainer visible={loading} miniVersion>
             <form onSubmit={formik.handleSubmit} className="w-full p-5">
               <div className="mb-4">
-                <label className="block">Nombre de Usuario</label>
+                <label htmlFor="userName" className="block">Nombre de Usuario</label>
                 <input
                   type="text"
                   name="userName"
@@ -88,7 +87,7 @@ const Login = () => {
                 />
               </div>
               <div className="mb-6">
-                <label className="block">Contraseña</label>
+                <label htmlFor="userName" className="block">Contraseña</label>
                 <input
                   type="password"
                   name="password"

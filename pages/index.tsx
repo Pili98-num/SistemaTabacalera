@@ -82,13 +82,14 @@ export default function Home() {
                   <div>
                     <button
                       onClick={handleSolicitudes}
-                      className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300"
+                      className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-900 bg-yellow-400 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300"
                     >
                       Ver solicitudes
                     </button>
+
                   </div>
                   <div>
-                    <button onClick={handleHistorySolicitudes} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300">
+                    <button onClick={handleHistorySolicitudes} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-900 bg-yellow-400 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300">
                       Ver historial
                     </button>
                   </div>

@@ -48,6 +48,9 @@ const AdminPanel = (props: Props) => {
           <option value={Pendiente}>Pendiente</option>
           <option value={Observacion}>Observacion</option>
           <option value={Terminado}>Terminado</option>
+          
+
+
         </Form.Select>
       </Col>
     </Row>

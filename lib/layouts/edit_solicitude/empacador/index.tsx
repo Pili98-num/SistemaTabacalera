@@ -46,6 +46,7 @@ const EmpacadorPanel = (props: Props) => {
           <option>Seleccione una opción</option>
           <option value={Pendiente}>Pendiente</option>
           <option value={Terminado}>Terminado</option>
+          
         </Form.Select>
       </Col>
     </Row>

@@ -5,7 +5,7 @@ import { AuditoryModel, BackupModel, SolicitudeModel } from "../schemas";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse //ESTE GUARDA EL BACKUD
 ) {
   const solicitude = req.body as Solicitude;
   const userName = req.headers.username as string;
